@@ -8,11 +8,11 @@
   "files": [
     "/dist"
   ],
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
   "dependencies": {
+    "ofetch": "^1.5.0"
   },
   "devDependencies": {
     "typescript": "^5.5.3"
