@@ -1,6 +1,6 @@
 import {request, safeRequest} from "./requests";
-import {Height, Network} from "./types/response-types";
-import { SafeReturnType} from "./types/internal";
+import {Height, Network, TipAnnouncements} from "./types/response-types";
+import {SafeReturnType} from "./types/internal";
 
 export default class NeptuneClient {
     private url: string;
@@ -17,11 +17,19 @@ export default class NeptuneClient {
         return await request<Network>(this.url, "node_network")
     }
 
-    public async safeHeight(): Promise<SafeReturnType<Height>>{
+    public async safeHeight(): Promise<SafeReturnType<Height>> {
         return await safeRequest<Height>(this.url, "chain_height")
     }
 
     public async height(): Promise<Height> {
         return await request<Height>(this.url, "chain_height")
+    }
+
+    public async safeTipAnnouncements(): Promise<SafeReturnType<TipAnnouncements>> {
+        return await safeRequest<TipAnnouncements>(this.url, "chain_tipAnnouncements")
+    }
+
+    public async tipAnnouncements(): Promise<TipAnnouncements> {
+        return await request<TipAnnouncements>(this.url, "chain_tipAnnouncements")
     }
 }

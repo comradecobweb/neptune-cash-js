@@ -5,3 +5,7 @@ export interface Network {
 export interface Height {
     height: number
 }
+
+export interface TipAnnouncements {
+    announcements: string[]
+}
