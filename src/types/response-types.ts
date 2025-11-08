@@ -6,6 +6,10 @@ export interface Height {
     height: number
 }
 
+export interface TipDigest {
+    digest: string // Digest
+}
+
 export interface TipAnnouncements {
     announcements: string[]
 }
