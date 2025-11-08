@@ -3,7 +3,7 @@ export interface Network {
 }
 
 export interface Height {
-    height: number
+    height: bigint // u64
 }
 
 export interface TipDigest {
