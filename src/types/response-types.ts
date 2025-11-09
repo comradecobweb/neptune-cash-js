@@ -38,6 +38,10 @@ export interface TipAnnouncements {
     announcements: string[]
 }
 
+export interface BlockDigest {
+    digest: string // Digest
+}
+
 
 
 interface BlockType {

@@ -1,5 +1,6 @@
 import {request, safeRequest} from "./requests";
 import {
+    BlockDigest,
     Height,
     Network, Tip,
     TipAnnouncements,
@@ -10,6 +11,7 @@ import {
     TipProof, TipTransactionKernel
 } from "./types/response-types";
 import {SafeReturnType} from "./types/internal";
+import {BlockSelector} from "./types/argument-types";
 
 export default class NeptuneClient {
     private readonly url: string;
@@ -96,5 +98,13 @@ export default class NeptuneClient {
 
     public async tipAnnouncements(): Promise<TipAnnouncements> {
         return await request<TipAnnouncements>(this.url, "chain_tipAnnouncements")
+    }
+
+    public async safeGetBlockDigest(blockSelector: BlockSelector): Promise<SafeReturnType<BlockDigest>> {
+        return await safeRequest<BlockDigest>(this.url, "archival_getBlockDigest", [blockSelector])
+    }
+
+    public async getBlockDigest(blockSelector: BlockSelector): Promise<BlockDigest> {
+        return await request<BlockDigest>(this.url, "archival_getBlockDigest", [blockSelector])
     }
 }
