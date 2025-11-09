@@ -1,7 +1,9 @@
 import {JSONRPCErrorType, SafeReturnType} from "./types/internal";
-import { ofetch } from 'ofetch'
+import {ofetch} from 'ofetch'
 import RequestError from "./errors/RequestError";
 import JSONRPCError from "./errors/JSONRPCError";
+import MethodNotFoundError from "./errors/MethodNotFoundError";
+import InvalidParamsError from "./errors/InvalidParamsError";
 
 // BigInt serialization
 declare global {
@@ -63,7 +65,13 @@ export async function request<T>(url: string, method: string, params: any[] = []
     })
 
     if (response.error) {
-        throw new JSONRPCError(response.error)
+        if (response.error.message == "Method not found" && response.error.code == -32601) {
+            throw new MethodNotFoundError(method)
+        } else if (response.error.message == "Invalid params" && response.error.code == -32602) {
+            throw new InvalidParamsError(method, params)
+        } else {
+            throw new JSONRPCError(method, response.error.message, response.error.code)
+        }
     }
 
     return response.result as T // if there are no errors thrown then result must be T
