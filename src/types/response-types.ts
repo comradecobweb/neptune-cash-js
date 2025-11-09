@@ -42,6 +42,10 @@ export interface BlockDigest {
     digest: string // Digest
 }
 
+export interface BlockDigests {
+    digests: string[] // Digest
+}
+
 
 
 interface BlockType {
