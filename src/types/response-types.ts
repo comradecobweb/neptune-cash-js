@@ -30,6 +30,10 @@ export interface TipBody {
     body: BlockBodyType
 }
 
+export interface TipTransactionKernel{
+    kernel: TransactionKernelType
+}
+
 export interface TipAnnouncements {
     announcements: string[]
 }
