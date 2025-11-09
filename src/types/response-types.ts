@@ -58,6 +58,10 @@ export interface BlockKernel {
     kernel: BlockKernelType
 }
 
+export interface BlockHeader {
+    header: BlockHeaderType
+}
+
 
 
 interface BlockType {
