@@ -70,6 +70,10 @@ export interface BlockTransactionKernel{
     kernel: TransactionKernelType
 }
 
+export interface BlockAnnouncements {
+    announcements: string[]
+}
+
 
 
 interface BlockType {

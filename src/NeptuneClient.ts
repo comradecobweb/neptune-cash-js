@@ -1,6 +1,6 @@
 import {request, safeRequest} from "./requests";
 import {
-    Block, BlockBody,
+    Block, BlockAnnouncements, BlockBody,
     BlockDigest, BlockDigests, BlockHeader, BlockKernel, BlockProof, BlockTransactionKernel,
     Height,
     Network, Tip,
@@ -163,5 +163,13 @@ export default class NeptuneClient {
 
     public async getBlockTransactionKernel(blockSelector: BlockSelector): Promise<BlockTransactionKernel> {
         return await request<BlockTransactionKernel>(this.url, "archival_getBlockTransactionKernel", [blockSelector])
+    }
+
+    public async safeGetBlockAnnouncements(blockSelector: BlockSelector): Promise<SafeReturnType<BlockAnnouncements>> {
+        return await safeRequest<BlockAnnouncements>(this.url, "archival_getBlockAnnouncements", [blockSelector])
+    }
+
+    public async getBlockAnnouncements(blockSelector: BlockSelector): Promise<BlockAnnouncements> {
+        return await request<BlockAnnouncements>(this.url, "archival_getBlockAnnouncements", [blockSelector])
     }
 }
