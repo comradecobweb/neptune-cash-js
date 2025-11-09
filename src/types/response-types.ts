@@ -10,12 +10,41 @@ export interface TipDigest {
     digest: string // Digest
 }
 
+export interface TipHeader {
+    header: BlockHeader
+}
+
 export interface TipBody {
     body: BlockBodyType
 }
 
 export interface TipAnnouncements {
     announcements: string[]
+}
+
+
+
+interface BlockHeader {
+    version: bigint, // u64
+    height: bigint, // u64
+    prev_block_digest: string, // Digest
+    timestamp: string, // u64 serialized as a numerical type
+    pow: BigInt,
+    cumulative_proof_of_work: string,
+    difficulty: string,
+    guesser_receiver_data: GuesserReceiverData,
+}
+
+interface BlockPow {
+    root: string, // Digest
+    path_a: string[], // Digest
+    path_b: string[], // Digest
+    nonce: string, // Digest
+}
+
+interface GuesserReceiverData {
+    receiver_digest: string, // Digest
+    lock_script_hash: string, // Digest
 }
 
 
