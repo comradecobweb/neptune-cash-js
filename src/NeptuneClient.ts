@@ -1,7 +1,7 @@
 import {request, safeRequest} from "./requests";
 import {
     Height,
-    Network,
+    Network, Tip,
     TipAnnouncements,
     TipBody,
     TipDigest,
@@ -40,6 +40,14 @@ export default class NeptuneClient {
 
     public async tipDigest(): Promise<TipDigest> {
         return await request<TipDigest>(this.url, "chain_tipDigest")
+    }
+
+    public async safeTip(): Promise<SafeReturnType<Tip>> {
+        return await safeRequest<Tip>(this.url, "chain_tip")
+    }
+
+    public async tip(): Promise<Tip> {
+        return await request<Tip>(this.url, "chain_tip")
     }
 
     public async safeTipProof(): Promise<SafeReturnType<TipProof>> {

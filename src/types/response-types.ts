@@ -10,6 +10,10 @@ export interface TipDigest {
     digest: string // Digest
 }
 
+export interface Tip {
+    block: BlockType
+}
+
 export interface TipProof {
     proof: string
 }
@@ -28,6 +32,13 @@ export interface TipBody {
 
 export interface TipAnnouncements {
     announcements: string[]
+}
+
+
+
+interface BlockType {
+    kernel: BlockKernel,
+    proof: string
 }
 
 
