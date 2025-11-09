@@ -1,6 +1,6 @@
 import {request, safeRequest} from "./requests";
 import {
-    Block,
+    Block, BlockBody,
     BlockDigest, BlockDigests, BlockHeader, BlockKernel, BlockProof,
     Height,
     Network, Tip,
@@ -147,5 +147,13 @@ export default class NeptuneClient {
 
     public async getBlockHeader(blockSelector: BlockSelector): Promise<BlockHeader> {
         return await request<BlockHeader>(this.url, "archival_getBlockHeader", [blockSelector])
+    }
+
+    public async safeGetBlockBody(blockSelector: BlockSelector): Promise<SafeReturnType<BlockBody>> {
+        return await safeRequest<BlockBody>(this.url, "archival_getBlockBody", [blockSelector])
+    }
+
+    public async getBlockBody(blockSelector: BlockSelector): Promise<BlockBody> {
+        return await request<BlockBody>(this.url, "archival_getBlockBody", [blockSelector])
     }
 }

@@ -62,6 +62,10 @@ export interface BlockHeader {
     header: BlockHeaderType
 }
 
+export interface BlockBody {
+    body: BlockBodyType
+}
+
 
 
 interface BlockType {
