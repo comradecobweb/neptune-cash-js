@@ -66,6 +66,10 @@ export interface BlockBody {
     body: BlockBodyType
 }
 
+export interface BlockTransactionKernel{
+    kernel: TransactionKernelType
+}
+
 
 
 interface BlockType {
