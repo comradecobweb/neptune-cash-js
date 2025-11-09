@@ -46,6 +46,10 @@ export interface BlockDigests {
     digests: string[] // Digest
 }
 
+export interface Block {
+    block: BlockType
+}
+
 
 
 interface BlockType {
