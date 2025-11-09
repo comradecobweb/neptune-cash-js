@@ -10,6 +10,10 @@ export interface TipDigest {
     digest: string // Digest
 }
 
+export interface TipProof {
+    proof: string
+}
+
 export interface TipKernel {
     kernel: BlockKernel
 }
