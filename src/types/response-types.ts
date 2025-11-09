@@ -74,6 +74,10 @@ export interface BlockAnnouncements {
     announcements: string[]
 }
 
+export interface IsBlockCanonical {
+    canonical: boolean
+}
+
 
 
 interface BlockType {

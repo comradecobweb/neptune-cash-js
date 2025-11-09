@@ -2,7 +2,7 @@ import {request, safeRequest} from "./requests";
 import {
     Block, BlockAnnouncements, BlockBody,
     BlockDigest, BlockDigests, BlockHeader, BlockKernel, BlockProof, BlockTransactionKernel,
-    Height,
+    Height, IsBlockCanonical,
     Network, Tip,
     TipAnnouncements,
     TipBody,
@@ -13,6 +13,7 @@ import {
 } from "./types/response-types";
 import {SafeReturnType} from "./types/internal";
 import {BlockSelector} from "./types/argument-types";
+import {Digest} from "./types/base-types";
 
 export default class NeptuneClient {
     private readonly url: string;
@@ -171,5 +172,13 @@ export default class NeptuneClient {
 
     public async getBlockAnnouncements(blockSelector: BlockSelector): Promise<BlockAnnouncements> {
         return await request<BlockAnnouncements>(this.url, "archival_getBlockAnnouncements", [blockSelector])
+    }
+
+    public async safeIsBlockCanonical(digest: Digest): Promise<SafeReturnType<IsBlockCanonical>> {
+        return await safeRequest<IsBlockCanonical>(this.url, "archival_isBlockCanonical", [digest])
+    }
+
+    public async isBlockCanonical(digest: Digest): Promise<IsBlockCanonical> {
+        return await request<IsBlockCanonical>(this.url, "archival_isBlockCanonical", [digest])
     }
 }
