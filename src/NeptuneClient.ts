@@ -1,7 +1,7 @@
 import {request, safeRequest} from "./requests";
 import {
     Block,
-    BlockDigest, BlockDigests,
+    BlockDigest, BlockDigests, BlockProof,
     Height,
     Network, Tip,
     TipAnnouncements,
@@ -123,5 +123,13 @@ export default class NeptuneClient {
 
     public async getBlock(blockSelector: BlockSelector): Promise<Block> {
         return await request<Block>(this.url, "archival_getBlock", [blockSelector])
+    }
+
+    public async safeGetBlockProof(blockSelector: BlockSelector): Promise<SafeReturnType<BlockProof>> {
+        return await safeRequest<BlockProof>(this.url, "archival_getBlockProof", [blockSelector])
+    }
+
+    public async getBlockProof(blockSelector: BlockSelector): Promise<BlockProof> {
+        return await request<BlockProof>(this.url, "archival_getBlockProof", [blockSelector])
     }
 }

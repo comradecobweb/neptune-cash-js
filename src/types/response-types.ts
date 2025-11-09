@@ -50,6 +50,10 @@ export interface Block {
     block: BlockType
 }
 
+export interface BlockProof {
+    proof: string
+}
+
 
 
 interface BlockType {
