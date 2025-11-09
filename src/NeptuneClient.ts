@@ -3,7 +3,7 @@ import {Height, Network, TipAnnouncements, TipBody, TipDigest, TipHeader} from "
 import {SafeReturnType} from "./types/internal";
 
 export default class NeptuneClient {
-    private url: string;
+    private readonly url: string;
 
     constructor(hostName: string = 'localhost', port: number = 9797) {
         this.url = `http://${hostName}:${port}/`
