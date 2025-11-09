@@ -19,11 +19,11 @@ export interface TipProof {
 }
 
 export interface TipKernel {
-    kernel: BlockKernel
+    kernel: BlockKernelType
 }
 
 export interface TipHeader {
-    header: BlockHeader
+    header: BlockHeaderType
 }
 
 export interface TipBody {
@@ -37,20 +37,20 @@ export interface TipAnnouncements {
 
 
 interface BlockType {
-    kernel: BlockKernel,
+    kernel: BlockKernelType,
     proof: string
 }
 
 
 
-interface BlockKernel {
-    header: BlockHeader,
+interface BlockKernelType {
+    header: BlockHeaderType,
     body: BlockBodyType,
 }
 
 
 
-interface BlockHeader {
+interface BlockHeaderType {
     version: bigint, // u64
     height: bigint, // u64
     prev_block_digest: string, // Digest
