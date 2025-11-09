@@ -1,15 +1,13 @@
 import {request, safeRequest} from "./requests";
 import {
-    Block, BlockAnnouncements, BlockBody,
-    BlockDigest, BlockDigests, BlockHeader, BlockKernel, BlockProof, BlockTransactionKernel,
+    BlockBody,
+    BlockDigests, BlockHeader,
     Height, IsBlockCanonical,
-    Network, Tip,
-    TipAnnouncements,
-    TipBody,
-    TipDigest,
-    TipHeader,
-    TipKernel,
-    TipProof, TipTransactionKernel
+    Network, Block,
+    BlockAnnouncements,
+    BlockDigest,
+    BlockKernel,
+    BlockProof, BlockTransactionKernel
 } from "./types/response-types";
 import {SafeReturnType} from "./types/internal";
 import {BlockSelector} from "./types/argument-types";
@@ -38,68 +36,68 @@ export default class NeptuneClient {
         return await request<Height>(this.url, "chain_height")
     }
 
-    public async safeTipDigest(): Promise<SafeReturnType<TipDigest>> {
-        return await safeRequest<TipDigest>(this.url, "chain_tipDigest")
+    public async safeTipDigest(): Promise<SafeReturnType<BlockDigest>> {
+        return await safeRequest<BlockDigest>(this.url, "chain_tipDigest")
     }
 
-    public async tipDigest(): Promise<TipDigest> {
-        return await request<TipDigest>(this.url, "chain_tipDigest")
+    public async tipDigest(): Promise<BlockDigest> {
+        return await request<BlockDigest>(this.url, "chain_tipDigest")
     }
 
-    public async safeTip(): Promise<SafeReturnType<Tip>> {
-        return await safeRequest<Tip>(this.url, "chain_tip")
+    public async safeTip(): Promise<SafeReturnType<Block>> {
+        return await safeRequest<Block>(this.url, "chain_tip")
     }
 
-    public async tip(): Promise<Tip> {
-        return await request<Tip>(this.url, "chain_tip")
+    public async tip(): Promise<Block> {
+        return await request<Block>(this.url, "chain_tip")
     }
 
-    public async safeTipProof(): Promise<SafeReturnType<TipProof>> {
-        return await safeRequest<TipProof>(this.url, "chain_tipProof")
+    public async safeTipProof(): Promise<SafeReturnType<BlockProof>> {
+        return await safeRequest<BlockProof>(this.url, "chain_tipProof")
     }
 
-    public async tipProof(): Promise<TipProof> {
-        return await request<TipProof>(this.url, "chain_tipProof")
+    public async tipProof(): Promise<BlockProof> {
+        return await request<BlockProof>(this.url, "chain_tipProof")
     }
 
-    public async safeTipKernel(): Promise<SafeReturnType<TipKernel>> {
-        return await safeRequest<TipKernel>(this.url, "chain_tipKernel")
+    public async safeTipKernel(): Promise<SafeReturnType<BlockKernel>> {
+        return await safeRequest<BlockKernel>(this.url, "chain_tipKernel")
     }
 
-    public async tipKernel(): Promise<TipKernel> {
-        return await request<TipKernel>(this.url, "chain_tipKernel")
+    public async tipKernel(): Promise<BlockKernel> {
+        return await request<BlockKernel>(this.url, "chain_tipKernel")
     }
 
-    public async safeTipHeader(): Promise<SafeReturnType<TipHeader>> {
-        return await safeRequest<TipHeader>(this.url, "chain_tipHeader")
+    public async safeTipHeader(): Promise<SafeReturnType<BlockHeader>> {
+        return await safeRequest<BlockHeader>(this.url, "chain_tipHeader")
     }
 
-    public async tipHeader(): Promise<TipHeader> {
-        return await request<TipHeader>(this.url, "chain_tipHeader")
+    public async tipHeader(): Promise<BlockHeader> {
+        return await request<BlockHeader>(this.url, "chain_tipHeader")
     }
 
-    public async safeTipBody(): Promise<SafeReturnType<TipBody>> {
-        return await safeRequest<TipBody>(this.url, "chain_tipBody")
+    public async safeTipBody(): Promise<SafeReturnType<BlockBody>> {
+        return await safeRequest<BlockBody>(this.url, "chain_tipBody")
     }
 
-    public async tipBody(): Promise<TipBody> {
-        return await request<TipBody>(this.url, "chain_tipBody")
+    public async tipBody(): Promise<BlockBody> {
+        return await request<BlockBody>(this.url, "chain_tipBody")
     }
 
-    public async safeTipTransactionKernel(): Promise<SafeReturnType<TipTransactionKernel>> {
-        return await safeRequest<TipTransactionKernel>(this.url, "chain_tipTransactionKernel")
+    public async safeTipTransactionKernel(): Promise<SafeReturnType<BlockTransactionKernel>> {
+        return await safeRequest<BlockTransactionKernel>(this.url, "chain_tipTransactionKernel")
     }
 
-    public async tipTransactionKernel(): Promise<TipTransactionKernel> {
-        return await request<TipTransactionKernel>(this.url, "chain_tipTransactionKernel")
+    public async tipTransactionKernel(): Promise<BlockTransactionKernel> {
+        return await request<BlockTransactionKernel>(this.url, "chain_tipTransactionKernel")
     }
 
-    public async safeTipAnnouncements(): Promise<SafeReturnType<TipAnnouncements>> {
-        return await safeRequest<TipAnnouncements>(this.url, "chain_tipAnnouncements")
+    public async safeTipAnnouncements(): Promise<SafeReturnType<BlockAnnouncements>> {
+        return await safeRequest<BlockAnnouncements>(this.url, "chain_tipAnnouncements")
     }
 
-    public async tipAnnouncements(): Promise<TipAnnouncements> {
-        return await request<TipAnnouncements>(this.url, "chain_tipAnnouncements")
+    public async tipAnnouncements(): Promise<BlockAnnouncements> {
+        return await request<BlockAnnouncements>(this.url, "chain_tipAnnouncements")
     }
 
     public async safeGetBlockDigest(blockSelector: BlockSelector): Promise<SafeReturnType<BlockDigest>> {

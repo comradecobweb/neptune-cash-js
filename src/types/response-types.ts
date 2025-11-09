@@ -6,44 +6,8 @@ export interface Height {
     height: bigint // u64
 }
 
-export interface TipDigest {
-    digest: string // Digest
-}
-
-export interface Tip {
-    block: BlockType
-}
-
-export interface TipProof {
-    proof: string
-}
-
-export interface TipKernel {
-    kernel: BlockKernelType
-}
-
-export interface TipHeader {
-    header: BlockHeaderType
-}
-
-export interface TipBody {
-    body: BlockBodyType
-}
-
-export interface TipTransactionKernel{
-    kernel: TransactionKernelType
-}
-
-export interface TipAnnouncements {
-    announcements: string[]
-}
-
 export interface BlockDigest {
     digest: string // Digest
-}
-
-export interface BlockDigests {
-    digests: string[] // Digest
 }
 
 export interface Block {
@@ -66,12 +30,16 @@ export interface BlockBody {
     body: BlockBodyType
 }
 
-export interface BlockTransactionKernel{
+export interface BlockTransactionKernel {
     kernel: TransactionKernelType
 }
 
 export interface BlockAnnouncements {
     announcements: string[]
+}
+
+export interface BlockDigests {
+    digests: string[] // Digest
 }
 
 export interface IsBlockCanonical {
