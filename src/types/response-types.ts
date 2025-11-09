@@ -54,6 +54,10 @@ export interface BlockProof {
     proof: string
 }
 
+export interface BlockKernel {
+    kernel: BlockKernelType
+}
+
 
 
 interface BlockType {
