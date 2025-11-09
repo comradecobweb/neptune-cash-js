@@ -10,6 +10,10 @@ export interface TipDigest {
     digest: string // Digest
 }
 
+export interface TipKernel {
+    kernel: BlockKernel
+}
+
 export interface TipHeader {
     header: BlockHeader
 }
@@ -20,6 +24,13 @@ export interface TipBody {
 
 export interface TipAnnouncements {
     announcements: string[]
+}
+
+
+
+interface BlockKernel {
+    header: BlockHeader,
+    body: BlockBodyType,
 }
 
 
