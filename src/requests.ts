@@ -36,16 +36,16 @@ export async function safeRequest<T>(url: string, method: string, params: any[] 
             method: method,
             params: params
         },
-        async onRequestError({request, options, error}) {
-            safeResult.error = {request, options, error}
-        },
+        ignoreResponseError: true,
+    }).catch(error => {
+        safeResult.error = {
+            message: error.message,
+        }
     })
 
-    if (response.error) {
-        safeResult.error = response.error
-    }
-    if (response.result) {
+    if (response) {
         safeResult.data = response.result
+        safeResult.error = response.error
     }
 
     return safeResult
@@ -59,8 +59,9 @@ export async function request<T>(url: string, method: string, params: any[] = []
             method: method,
             params: params
         },
+        ignoreResponseError: true,
         async onRequestError({request, options, error}) {
-            throw new RequestError({request, options, error})
+            throw new RequestError(request, options, error)
         },
     })
 
