@@ -1,7 +1,12 @@
-export type SafeReturnType<T> = {
-    data?: T,
-    error?: JSONRPCErrorType | RequestErrorType,
-}
+export type SafeReturnType<T> =
+    {
+        success: true,
+        data: T
+    } |
+    {
+        success: false,
+        error: JSONRPCErrorType | RequestErrorType
+    }
 
 export interface JSONRPCErrorType {
     code: number

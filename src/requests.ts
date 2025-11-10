@@ -24,9 +24,9 @@ type JSONRPCResponse<T> = {
 }
 
 export async function safeRequest<T>(url: string, method: string, params: any[] = []): Promise<SafeReturnType<T>> {
-    const safeResult: SafeReturnType<T> = {
-        data: undefined,
-        error: undefined,
+    let safeResult: SafeReturnType<T> = {
+        success: false,
+        error: {message: "Unknown error occurred"}
     }
 
     const response = await ofetch<JSONRPCResponse<T>>(url, {
@@ -38,14 +38,24 @@ export async function safeRequest<T>(url: string, method: string, params: any[] 
         },
         ignoreResponseError: true,
     }).catch(error => {
-        safeResult.error = {
-            message: error.message,
+        safeResult = {
+            success: false,
+            error: {message: error.message}
         }
     })
 
     if (response) {
-        safeResult.data = response.result
-        safeResult.error = response.error
+        if (response.error) {
+            safeResult = {
+                success: false,
+                error: response.error
+            }
+        } else if (response.result) {
+            safeResult = {
+                success: true,
+                data: response.result
+            }
+        }
     }
 
     return safeResult
