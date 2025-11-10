@@ -15,7 +15,7 @@ export interface Block {
 }
 
 export interface BlockProof {
-    proof: string
+    proof: string | null
 }
 
 export interface BlockKernel {
