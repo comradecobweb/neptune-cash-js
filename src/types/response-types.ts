@@ -69,7 +69,7 @@ interface BlockHeaderType {
     height: bigint, // u64
     prev_block_digest: Digest,
     timestamp: string, // u64 serialized as a numerical type
-    pow: BigInt,
+    pow: BlockPow,
     cumulative_proof_of_work: string,
     difficulty: string,
     guesser_receiver_data: GuesserReceiverData,
