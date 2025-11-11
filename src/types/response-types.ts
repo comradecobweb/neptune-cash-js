@@ -1,3 +1,5 @@
+import {Digest} from "./base-types";
+
 export interface Network {
     network: 'main' | 'alpha' | 'beta' | 'testnet' | 'regtest' // based on the result of neptune-core --help
 }
@@ -7,7 +9,7 @@ export interface Height {
 }
 
 export interface BlockDigest {
-    digest: string // Digest
+    digest: Digest
 }
 
 export interface Block {
@@ -39,7 +41,7 @@ export interface BlockAnnouncements {
 }
 
 export interface BlockDigests {
-    digests: string[] // Digest
+    digests: Digest[]
 }
 
 export interface IsBlockCanonical {
@@ -65,7 +67,7 @@ interface BlockKernelType {
 interface BlockHeaderType {
     version: bigint, // u64
     height: bigint, // u64
-    prev_block_digest: string, // Digest
+    prev_block_digest: Digest,
     timestamp: string, // u64 serialized as a numerical type
     pow: BigInt,
     cumulative_proof_of_work: string,
@@ -74,15 +76,15 @@ interface BlockHeaderType {
 }
 
 interface BlockPow {
-    root: string, // Digest
-    path_a: string[], // Digest
-    path_b: string[], // Digest
-    nonce: string, // Digest
+    root: Digest,
+    path_a: Digest[],
+    path_b: Digest[],
+    nonce: Digest,
 }
 
 interface GuesserReceiverData {
-    receiver_digest: string, // Digest
-    lock_script_hash: string, // Digest
+    receiver_digest: Digest,
+    lock_script_hash: Digest,
 }
 
 
@@ -96,12 +98,12 @@ interface BlockBodyType {
 
 interface TransactionKernelType {
     inputs: RemovalRecord[],
-    outputs: string, // Digest
+    outputs: Digest,
     announcements: string[],
     fee: bigint, // NativeCurrencyAmount
     coinbase: bigint, // NativeCurrencyAmount or None
     timestamp: string, // u64 serialized as a numerical type
-    mutatorSetHash: string, // Digest
+    mutatorSetHash: Digest,
     mergeBit: boolean,
 }
 
@@ -116,13 +118,13 @@ interface AbsoluteIndexSet {
 }
 
 interface TargetChunks {
-    [key: string]: [[string], [number]]
-    //             Digest   , u32
+    [key: string]: [[Digest], [number]]
+    //                      , u32
 }
 
 interface MutatorSetAccumulator {
     leafCount: bigint, // u64
-    peaks: string[] // Digest
+    peaks: Digest[]
 }
 
 interface MmrAccumulator {
