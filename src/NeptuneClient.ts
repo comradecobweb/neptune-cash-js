@@ -20,162 +20,282 @@ export default class NeptuneClient {
         this.url = `http://${hostName}:${port}/`
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeNetwork(): Promise<SafeReturnType<Network>> {
         return await safeRequest<Network>(this.url, "node_network")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async network(): Promise<Network> {
         return await request<Network>(this.url, "node_network")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeHeight(): Promise<SafeReturnType<Height>> {
         return await safeRequest<Height>(this.url, "chain_height")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async height(): Promise<Height> {
         return await request<Height>(this.url, "chain_height")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeTipDigest(): Promise<SafeReturnType<BlockDigest>> {
         return await safeRequest<BlockDigest>(this.url, "chain_tipDigest")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async tipDigest(): Promise<BlockDigest> {
         return await request<BlockDigest>(this.url, "chain_tipDigest")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeTip(): Promise<SafeReturnType<Block>> {
         return await safeRequest<Block>(this.url, "chain_tip")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async tip(): Promise<Block> {
         return await request<Block>(this.url, "chain_tip")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeTipProof(): Promise<SafeReturnType<BlockProof>> {
         return await safeRequest<BlockProof>(this.url, "chain_tipProof")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async tipProof(): Promise<BlockProof> {
         return await request<BlockProof>(this.url, "chain_tipProof")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeTipKernel(): Promise<SafeReturnType<BlockKernel>> {
         return await safeRequest<BlockKernel>(this.url, "chain_tipKernel")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async tipKernel(): Promise<BlockKernel> {
         return await request<BlockKernel>(this.url, "chain_tipKernel")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeTipHeader(): Promise<SafeReturnType<BlockHeader>> {
         return await safeRequest<BlockHeader>(this.url, "chain_tipHeader")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async tipHeader(): Promise<BlockHeader> {
         return await request<BlockHeader>(this.url, "chain_tipHeader")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeTipBody(): Promise<SafeReturnType<BlockBody>> {
         return await safeRequest<BlockBody>(this.url, "chain_tipBody")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async tipBody(): Promise<BlockBody> {
         return await request<BlockBody>(this.url, "chain_tipBody")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeTipTransactionKernel(): Promise<SafeReturnType<BlockTransactionKernel>> {
         return await safeRequest<BlockTransactionKernel>(this.url, "chain_tipTransactionKernel")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async tipTransactionKernel(): Promise<BlockTransactionKernel> {
         return await request<BlockTransactionKernel>(this.url, "chain_tipTransactionKernel")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeTipAnnouncements(): Promise<SafeReturnType<BlockAnnouncements>> {
         return await safeRequest<BlockAnnouncements>(this.url, "chain_tipAnnouncements")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async tipAnnouncements(): Promise<BlockAnnouncements> {
         return await request<BlockAnnouncements>(this.url, "chain_tipAnnouncements")
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeGetBlockDigest(blockSelector: BlockSelector): Promise<SafeReturnType<BlockDigest>> {
         return await safeRequest<BlockDigest>(this.url, "archival_getBlockDigest", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async getBlockDigest(blockSelector: BlockSelector): Promise<BlockDigest> {
         return await request<BlockDigest>(this.url, "archival_getBlockDigest", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeGetBlockDigests(height: bigint): Promise<SafeReturnType<BlockDigests>> {
         return await safeRequest<BlockDigests>(this.url, "archival_getBlockDigests", [height])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async getBlockDigests(height: bigint): Promise<BlockDigests> {
         return await request<BlockDigests>(this.url, "archival_getBlockDigests", [height])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeGetBlock(blockSelector: BlockSelector): Promise<SafeReturnType<Block>> {
         return await safeRequest<Block>(this.url, "archival_getBlock", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async getBlock(blockSelector: BlockSelector): Promise<Block> {
         return await request<Block>(this.url, "archival_getBlock", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeGetBlockProof(blockSelector: BlockSelector): Promise<SafeReturnType<BlockProof>> {
         return await safeRequest<BlockProof>(this.url, "archival_getBlockProof", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async getBlockProof(blockSelector: BlockSelector): Promise<BlockProof> {
         return await request<BlockProof>(this.url, "archival_getBlockProof", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeGetBlockKernel(blockSelector: BlockSelector): Promise<SafeReturnType<BlockKernel>> {
         return await safeRequest<BlockKernel>(this.url, "archival_getBlockKernel", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async getBlockKernel(blockSelector: BlockSelector): Promise<BlockKernel> {
         return await request<BlockKernel>(this.url, "archival_getBlockKernel", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeGetBlockHeader(blockSelector: BlockSelector): Promise<SafeReturnType<BlockHeader>> {
         return await safeRequest<BlockHeader>(this.url, "archival_getBlockHeader", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async getBlockHeader(blockSelector: BlockSelector): Promise<BlockHeader> {
         return await request<BlockHeader>(this.url, "archival_getBlockHeader", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeGetBlockBody(blockSelector: BlockSelector): Promise<SafeReturnType<BlockBody>> {
         return await safeRequest<BlockBody>(this.url, "archival_getBlockBody", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async getBlockBody(blockSelector: BlockSelector): Promise<BlockBody> {
         return await request<BlockBody>(this.url, "archival_getBlockBody", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeGetBlockTransactionKernel(blockSelector: BlockSelector): Promise<SafeReturnType<BlockTransactionKernel>> {
         return await safeRequest<BlockTransactionKernel>(this.url, "archival_getBlockTransactionKernel", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async getBlockTransactionKernel(blockSelector: BlockSelector): Promise<BlockTransactionKernel> {
         return await request<BlockTransactionKernel>(this.url, "archival_getBlockTransactionKernel", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeGetBlockAnnouncements(blockSelector: BlockSelector): Promise<SafeReturnType<BlockAnnouncements>> {
         return await safeRequest<BlockAnnouncements>(this.url, "archival_getBlockAnnouncements", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async getBlockAnnouncements(blockSelector: BlockSelector): Promise<BlockAnnouncements> {
         return await request<BlockAnnouncements>(this.url, "archival_getBlockAnnouncements", [blockSelector])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async safeIsBlockCanonical(digest: Digest): Promise<SafeReturnType<IsBlockCanonical>> {
         return await safeRequest<IsBlockCanonical>(this.url, "archival_isBlockCanonical", [digest])
     }
 
+    /**
+     * @since neptune-core 0.5.0
+     */
     public async isBlockCanonical(digest: Digest): Promise<IsBlockCanonical> {
         return await request<IsBlockCanonical>(this.url, "archival_isBlockCanonical", [digest])
     }
