@@ -13,7 +13,6 @@
     "url": "https://github.com/comradecobweb/neptune-cash-js/issues"
   },
   "author": "@comradecobweb",
-  "private": "false",
   "files": [
     "/dist"
   ],
