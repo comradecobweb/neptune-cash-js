@@ -18,7 +18,7 @@ BigInt.prototype.toJSON = function () {
 
 type JSONRPCResponse<T> = {
     jsonrpc: "2.0"
-    id?: string | number
+    id?: string | number | null
     result?: T
     error?: JSONRPCErrorType
 }
