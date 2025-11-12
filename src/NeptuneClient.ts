@@ -16,6 +16,11 @@ import {Digest} from "./types/base-types";
 export default class NeptuneClient {
     private readonly url: string;
 
+    /**
+     * @description Creates an instance of the NeptuneClient class
+     * @param hostName RPC server's hostname (optional, default `localhost`)
+     * @param port RPC server's port (optional, default `9797`)
+     */
     constructor(hostName: string = 'localhost', port: number = 9797) {
         this.url = `http://${hostName}:${port}/`
     }
