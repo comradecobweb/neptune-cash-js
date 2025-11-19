@@ -13,7 +13,7 @@ import {SafeReturnType} from "./types/internal";
 import {BlockSelector} from "./types/argument-types";
 import {Digest} from "./types/base-types";
 
-export default class NeptuneClient {
+export class NeptuneClient {
     private readonly url: string;
 
     /**

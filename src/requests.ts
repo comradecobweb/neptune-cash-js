@@ -1,9 +1,9 @@
 import {JSONRPCErrorType, SafeReturnType} from "./types/internal";
 import {ofetch} from 'ofetch'
-import RequestError from "./errors/RequestError";
-import JSONRPCError from "./errors/JSONRPCError";
-import MethodNotFoundError from "./errors/MethodNotFoundError";
-import InvalidParamsError from "./errors/InvalidParamsError";
+import {RequestError} from "./errors/RequestError";
+import {JSONRPCError} from "./errors/JSONRPCError";
+import {MethodNotFoundError} from "./errors/MethodNotFoundError";
+import {InvalidParamsError} from "./errors/InvalidParamsError";
 
 // BigInt serialization
 declare global {
