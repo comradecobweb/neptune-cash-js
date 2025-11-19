@@ -1,6 +1,6 @@
 {
   "name": "neptune-cash",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Community-made library for the Neptune Cash cryptocurrency",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
