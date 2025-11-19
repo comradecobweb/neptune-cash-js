@@ -21,7 +21,7 @@ export default class NeptuneClient {
      * @param hostName RPC server's hostname (optional, default `localhost`)
      * @param port RPC server's port (optional, default `9797`)
      */
-    constructor(hostName: string = 'localhost', port: number = 9797) {
+    public constructor(hostName: string = 'localhost', port: number = 9797) {
         this.url = `http://${hostName}:${port}/`
     }
 
