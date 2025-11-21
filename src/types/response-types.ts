@@ -5,7 +5,7 @@ export interface Network {
 }
 
 export interface Height {
-    height: bigint // u64
+    height: number // u64
 }
 
 export interface BlockDigest {
