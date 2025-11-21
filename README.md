@@ -6,6 +6,10 @@ requests. Currently, it supports
 [first 20 implemented API methods](https://github.com/Neptune-Crypto/neptune-core/blob/41f5db8a38b2b1cc9f2880a04e71858084396d77/neptune-core/src/application/json_rpc/core/api/ops.rs#L32-L92).
 Licensed under [Apache-2.0](LICENSE.md).
 
+> [!IMPORTANT]
+> To see `README.md` or source code of your version please checkout to the right tag. 
+> The [npm packages](https://www.npmjs.com/package/neptune-cash) already contain the right data.
+
 ## How to use it?
 
 I assume, that you have already used libraries like [ethers](https://ethers.org/) or [viem](https://viem.sh/) and
