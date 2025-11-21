@@ -67,24 +67,24 @@ interface BlockKernelType {
 interface BlockHeaderType {
     version: bigint, // u64
     height: bigint, // u64
-    prev_block_digest: Digest,
+    prevBlockDigest: Digest,
     timestamp: string, // u64 serialized as a numerical type
     pow: BlockPow,
-    cumulative_proof_of_work: string,
+    cumulativeProofOfWork: string,
     difficulty: string,
-    guesser_receiver_data: GuesserReceiverData,
+    guesserReceiverData: GuesserReceiverData,
 }
 
 interface BlockPow {
     root: Digest,
-    path_a: Digest[],
-    path_b: Digest[],
+    pathA: Digest[],
+    pathB: Digest[],
     nonce: Digest,
 }
 
 interface GuesserReceiverData {
-    receiver_digest: Digest,
-    lock_script_hash: Digest,
+    receiverDigest: Digest,
+    lockScriptHash: Digest,
 }
 
 
