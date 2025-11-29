@@ -8,7 +8,7 @@ import {
     BlockDigest,
     BlockKernel,
     BlockProof, BlockTransactionKernel, TipDigest, Tip, TipProof, TipKernel, TipHeader, TipBody, TipTransactionKernel,
-    TipAnnouncements, UTXODigest, UTXOOrigin
+    TipAnnouncements, UTXODigest, UTXOOrigin, Blocks
 } from "./types/response-types";
 import {SafeReturnType} from "./types/internal";
 import {BlockSelector} from "./types/argument-types";
@@ -379,5 +379,19 @@ export class NeptuneClient {
      */
     public async findUTXOOrigin(additionRecord: Digest, searchDepth?: number): Promise<UTXOOrigin> {
         return await request<UTXOOrigin>(this.url, "archival_findUtxoOrigin", [additionRecord, searchDepth])
+    }
+
+    /**
+     * @since neptune-core after 0.5.0 (requires custom building and `wallet` module enabled)
+     */
+    public async safeGetBlocks(fromHeight: number, toHeight: number): Promise<SafeReturnType<Blocks>> {
+        return await safeRequest<Blocks>(this.url, "wallet_getBlocks", [fromHeight, toHeight])
+    }
+
+    /**
+     * @since neptune-core after 0.5.0 (requires custom building and `wallet` module enabled)
+     */
+    public async getBlocks(fromHeight: number, toHeight: number): Promise<Blocks> {
+        return await request<Blocks>(this.url, "wallet_getBlocks", [fromHeight, toHeight])
     }
 }

@@ -88,6 +88,10 @@ export interface UTXOOrigin {
     block: Digest | null
 }
 
+export interface Blocks {
+    block: BlockType[]
+}
+
 
 
 interface BlockType {
@@ -95,11 +99,17 @@ interface BlockType {
     proof: string
 }
 
+interface BlocksType {
+    kernel: BlockKernelType
+    proofLeaf: Digest
+}
+
 
 
 interface BlockKernelType {
     header: BlockHeaderType,
     body: BlockBodyType,
+    // TODO add an appendix field
 }
 
 
