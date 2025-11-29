@@ -8,6 +8,38 @@ export interface Height {
     height: number // u64
 }
 
+export interface TipDigest {
+    digest: Digest
+}
+
+export interface Tip {
+    block: BlockType
+}
+
+export interface TipProof {
+    proof: string
+}
+
+export interface TipKernel {
+    kernel: BlockKernelType
+}
+
+export interface TipHeader {
+    header: BlockHeaderType
+}
+
+export interface TipBody {
+    body: BlockBodyType
+}
+
+export interface TipTransactionKernel {
+    kernel: TransactionKernelType
+}
+
+export interface TipAnnouncements {
+    announcements: string[]
+}
+
 export interface BlockDigest {
     digest: Digest | null
 }
