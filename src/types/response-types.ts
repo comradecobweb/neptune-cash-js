@@ -9,11 +9,11 @@ export interface Height {
 }
 
 export interface BlockDigest {
-    digest: Digest
+    digest: Digest | null
 }
 
 export interface Block {
-    block: BlockType
+    block: BlockType | null
 }
 
 export interface BlockProof {
@@ -21,23 +21,23 @@ export interface BlockProof {
 }
 
 export interface BlockKernel {
-    kernel: BlockKernelType
+    kernel: BlockKernelType | null
 }
 
 export interface BlockHeader {
-    header: BlockHeaderType
+    header: BlockHeaderType | null
 }
 
 export interface BlockBody {
-    body: BlockBodyType
+    body: BlockBodyType | null
 }
 
 export interface BlockTransactionKernel {
-    kernel: TransactionKernelType
+    kernel: TransactionKernelType | null
 }
 
 export interface BlockAnnouncements {
-    announcements: string[]
+    announcements: string[] | null
 }
 
 export interface BlockDigests {
