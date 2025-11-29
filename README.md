@@ -1,13 +1,13 @@
 # Neptune Cash JS
 
-Neptune Cash JS is a community-made wrapper for
-[neptune-core JSON RPC API ](https://github.com/Neptune-Crypto/neptune-core/tree/master/neptune-core/src/application/json_rpc)
+Neptune Cash JS is a community-made wrapper
+for [neptune-core JSON RPC API ](https://github.com/Neptune-Crypto/neptune-core/tree/master/neptune-core/src/application/json_rpc)
 requests. Currently, it supports
-[first 20 implemented API methods](https://github.com/Neptune-Crypto/neptune-core/blob/41f5db8a38b2b1cc9f2880a04e71858084396d77/neptune-core/src/application/json_rpc/core/api/ops.rs#L32-L92).
-Licensed under [Apache-2.0](LICENSE.md).
+[first 20 implemented API methods](https://github.com/Neptune-Crypto/neptune-core/blob/41f5db8a38b2b1cc9f2880a04e71858084396d77/neptune-core/src/application/json_rpc/core/api/ops.rs#L32-L92)
+in both `Neptune Cash` and `Neptune Privacy`. Licensed under [Apache-2.0](LICENSE.md).
 
 > [!IMPORTANT]
-> To see `README.md` or source code of your version please checkout to the right tag. 
+> To see `README.md` or source code of your version please checkout to the right tag.
 > The [npm packages](https://www.npmjs.com/package/neptune-cash) already contain the right data.
 
 ## How to use it?
@@ -35,10 +35,10 @@ Note, that you aren't connect with the server immediately. The connection happen
 The constructor takes two parameters:
 
 1) `hostName` - host name of the RPC server, default `localhost`
-2) `port` - port of the RPC server, default `9797`
+2) `port` - port of the RPC server, default `9797` (notice that the default port for the XNT is `9897`)
 
-To create your own server check [Configuring RPC server](#configuring-rpc-server). If you don't like to, you can use mine -
-hostName: `217.160.149.196` with default port 🙂
+To create your own server check [Configuring RPC server](#configuring-rpc-server). If you don't like to, you can
+[use mine](#using-my-rpc) - hostName: `217.160.149.196` with default port 🙂
 
 ## Methods
 
@@ -58,16 +58,19 @@ The [NeptuneClient](src/NeptuneClient.ts) class provides two kinds of `async` me
 
 The library provides following classes for error handling (no other errors can be thrown):
 
-1) [RequestError](src/errors/RequestError.ts) - extends `Error` - responsible for network errors, e.g. invalid port or no
+1) [RequestError](src/errors/RequestError.ts) - extends `Error` - responsible for network errors, e.g. invalid port or
+   no
    internet connection.
 2) [JSONRPCError](src/errors/JSONRPCError.ts) - extends `Error`, responsible for errors from RPC responses. Also parent
    class for two following:
-
-- [MethodNotFoundError](src/errors/MethodNotFoundError.ts) - thrown when your server doesn't support a given method.
-- [InvalidParamsError](src/errors/InvalidParamsError.ts) - thrown when params you provided to method are invalid. Types
-  of method arguments aren't perfect so this error can occur often.
+    - [MethodNotFoundError](src/errors/MethodNotFoundError.ts) - thrown when your server doesn't support a given method.
+    - [InvalidParamsError](src/errors/InvalidParamsError.ts) - thrown when params you provided to method are invalid.
+      Types
+      of method arguments aren't perfect so this error can occur often.
 
 ## Configuring RPC server
+
+### Neptune Cash
 
 1) Download `neptune-core 0.5.0` from [here](https://github.com/Neptune-Crypto/neptune-core/releases/tag/v0.5.0).
 2) Sync your node with the network:
@@ -87,6 +90,49 @@ The library provides following classes for error handling (no other errors can b
     ```
    This command will start the server with all modules (and methods) supported by the library.
 
+### Neptune Privacy (XNT)
+
+1) Download `xnt-core 0.1.0` from [here](https://github.com/neptuneprivacy/xnt-core/releases/tag/v0.1.0).
+2) Sync your node with the network:
+
+    ```shell
+    xnt-core --peer <address>
+    ```
+
+   To get currently working peers you can search the internet or ask someone on
+   the [Neptune Privacy Telegram](https://t.me/neptuneprivacy).
+   You can use many `--peer` with other addresses.
+
+3) Run the server:
+
+    ```shell
+    xnt-core --listen-rpc --peer <address> --rpc-modules "chain,node,archival"
+    ```
+   This command will start the server with all modules (and methods) supported by the library.
+
+### Using my RPC
+
+* Neptune Cash
+
+    ```typescript
+    const neptune = new NeptuneClient("217.160.149.196", DEFAULT_NEPTUNE_CASH_PORT);
+    ```
+
+* Neptune Privacy (XNT)
+
+    ```typescript
+    const neptune = new NeptuneClient("217.160.149.196", DEFAULT_XNT_PORT);
+    ```
+
+Remember to provide the right imports!
+
+#### Specification
+
+* `neptune-core 0.5.0` modules: `chain`, `node`, `archival`
+* `xnt-core 0.1.0` modules: `chain`, `node`, `archival`
+
+Some of the newer features may not work.
+
 ## Tech stack
 
 The whole library is based on the [ofetch](https://github.com/unjs/ofetch). Also, I've used `ts-node` as a dev
@@ -103,4 +149,5 @@ open an issue!
 [Kaffin's PR](https://github.com/KaffinPX/neptune-core/commit/b5eb3f4dc9f229eda86cc4b8b4f860e21f5d4035) <br>
 [message.rs](https://github.com/Neptune-Crypto/neptune-core/blob/master/neptune-core/src/application/json_rpc/core/model/message.rs) <br>
 [https.rs](https://github.com/Neptune-Crypto/neptune-core/blob/master/neptune-core/src/application/json_rpc/server/http.rs) <br>
-[ops.rs](https://github.com/Neptune-Crypto/neptune-core/blob/master/neptune-core/src/application/json_rpc/core/api/ops.rs)
+[ops.rs](https://github.com/Neptune-Crypto/neptune-core/blob/master/neptune-core/src/application/json_rpc/core/api/ops.rs) <br>
+[XNT source code](https://github.com/neptuneprivacy/xnt-core)
