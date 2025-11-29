@@ -182,14 +182,14 @@ export class NeptuneClient {
     /**
      * @since neptune-core 0.5.0
      */
-    public async safeGetBlockDigests(height: bigint): Promise<SafeReturnType<BlockDigests>> {
+    public async safeGetBlockDigests(height: number): Promise<SafeReturnType<BlockDigests>> {
         return await safeRequest<BlockDigests>(this.url, "archival_getBlockDigests", [height])
     }
 
     /**
      * @since neptune-core 0.5.0
      */
-    public async getBlockDigests(height: bigint): Promise<BlockDigests> {
+    public async getBlockDigests(height: number): Promise<BlockDigests> {
         return await request<BlockDigests>(this.url, "archival_getBlockDigests", [height])
     }
 

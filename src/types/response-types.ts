@@ -66,7 +66,7 @@ interface BlockKernelType {
 
 interface BlockHeaderType {
     version: bigint, // u64
-    height: bigint, // u64
+    height: number, // u64
     prevBlockDigest: Digest,
     timestamp: string, // u64 serialized as a numerical type
     pow: BlockPow,
