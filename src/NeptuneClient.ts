@@ -8,7 +8,7 @@ import {
     BlockDigest,
     BlockKernel,
     BlockProof, BlockTransactionKernel, TipDigest, Tip, TipProof, TipKernel, TipHeader, TipBody, TipTransactionKernel,
-    TipAnnouncements
+    TipAnnouncements, UTXODigest
 } from "./types/response-types";
 import {SafeReturnType} from "./types/internal";
 import {BlockSelector} from "./types/argument-types";
@@ -347,5 +347,21 @@ export class NeptuneClient {
      */
     public async isBlockCanonical(digest: Digest): Promise<IsBlockCanonical> {
         return await request<IsBlockCanonical>(this.url, "archival_isBlockCanonical", [digest])
+    }
+
+    /**
+     * @since neptune-core after 0.5.0 (requires custom building)
+     * @since xnt-core 0.1.0
+     */
+    public async safeGetUtxoDigest(leafIndex: number): Promise<SafeReturnType<UTXODigest>> {
+        return await safeRequest<UTXODigest>(this.url, "archival_getUtxoDigest", [leafIndex])
+    }
+
+    /**
+     * @since neptune-core after 0.5.0 (requires custom building)
+     * @since xnt-core 0.1.0
+     */
+    public async getUtxoDigest(leafIndex: number): Promise<UTXODigest> {
+        return await request<UTXODigest>(this.url, "archival_getUtxoDigest", [leafIndex])
     }
 }

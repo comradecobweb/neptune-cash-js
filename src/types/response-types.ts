@@ -80,6 +80,10 @@ export interface IsBlockCanonical {
     canonical: boolean
 }
 
+export interface UTXODigest {
+    digest: Digest | null
+}
+
 
 
 interface BlockType {
