@@ -8,7 +8,7 @@ import {
     BlockDigest,
     BlockKernel,
     BlockProof, BlockTransactionKernel, TipDigest, Tip, TipProof, TipKernel, TipHeader, TipBody, TipTransactionKernel,
-    TipAnnouncements, UTXODigest
+    TipAnnouncements, UTXODigest, UTXOOrigin
 } from "./types/response-types";
 import {SafeReturnType} from "./types/internal";
 import {BlockSelector} from "./types/argument-types";
@@ -363,5 +363,21 @@ export class NeptuneClient {
      */
     public async getUtxoDigest(leafIndex: number): Promise<UTXODigest> {
         return await request<UTXODigest>(this.url, "archival_getUtxoDigest", [leafIndex])
+    }
+
+    /**
+     * @since neptune-core after 0.5.0 (requires custom building)
+     * @since xnt-core 0.1.0
+     */
+    public async safeFindUTXOOrigin(additionRecord: Digest, searchDepth?: number): Promise<SafeReturnType<UTXOOrigin>> {
+        return await safeRequest<UTXOOrigin>(this.url, "archival_findUtxoOrigin", [additionRecord, searchDepth])
+    }
+
+    /**
+     * @since neptune-core after 0.5.0 (requires custom building)
+     * @since xnt-core 0.1.0
+     */
+    public async findUTXOOrigin(additionRecord: Digest, searchDepth?: number): Promise<UTXOOrigin> {
+        return await request<UTXOOrigin>(this.url, "archival_findUtxoOrigin", [additionRecord, searchDepth])
     }
 }

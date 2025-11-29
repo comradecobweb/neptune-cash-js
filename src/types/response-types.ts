@@ -84,6 +84,10 @@ export interface UTXODigest {
     digest: Digest | null
 }
 
+export interface UTXOOrigin {
+    block: Digest | null
+}
+
 
 
 interface BlockType {
