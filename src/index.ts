@@ -1,4 +1,4 @@
-export {NeptuneClient} from "./NeptuneClient"
+export {NeptuneClient, DEFAULT_NEPTUNE_CASH_PORT, DEFAULT_XNT_PORT} from "./NeptuneClient"
 
 export {RequestError} from "./errors/RequestError"
 export {JSONRPCError} from "./errors/JSONRPCError"
